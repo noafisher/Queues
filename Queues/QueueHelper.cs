@@ -114,6 +114,39 @@ namespace Queues
             return max;
         }
 
+        public static void InsertToMid<T>(Queue<T> queue, T item)
+        {
+            Queue<T> copy = Copy(queue);
+            int count = 0;
+            while (!copy.IsEmpty())
+            {
+                count++;
+                copy.Remove();
+            }
 
+            Queue<T> helper = new Queue<T>();
+            int i = count / 2;
+            while (i > 0)
+            {
+                helper.Insert(queue.Remove());
+                i--;
+            }
+
+            helper.Insert(item);
+            int j = count / 2 +count%2;
+            while (j > 0)
+            {
+                helper.Insert(queue.Remove());
+                j--;
+            }
+
+            while (!helper.IsEmpty())
+            {
+                queue.Insert(helper.Remove());
+            }
+            
+        }
+
+        
     }
 }

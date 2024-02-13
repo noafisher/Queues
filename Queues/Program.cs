@@ -16,7 +16,8 @@ namespace Queues
             q1.Insert(4);
             q1.Insert(5);
             Console.WriteLine(q1);
-            Console.WriteLine(QueueHelper.Count(q1));
+            QueueHelper.InsertToMid(q1, 10);
+            Console.WriteLine(q1);
         }
     }
 }
